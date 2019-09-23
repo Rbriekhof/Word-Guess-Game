@@ -1,1 +1,58 @@
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="./assets/css/reset.css"> -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Star Wars Hangman</h1>
+            <p>How well do you know your Star Wars Trivia?</p>
+            <img class="logo"
+                src="https://www.eironons.com/thumbnail.asp?file=assets/images/starwarslogomoviet-shirtiron-ontransferdecalmsw7-1.png&maxx=200&maxy=200"
+                alt="">
+            <h3 id="result"></h3>
+        </div>
+        <div class="card card-default">
+            <div class="card-heading">
+                <h3 class="card-title">Word to Guess</h3>
+                <p id="question"></p>
+            </div>
+            <div class="card-body">
+                <h2 id="wordtoGuess">_ _ _ _ _ _ _</h2>
+            </div>
+        </div>
+        <div class="card card-default">
+            <div class="card-body">
+                Letters Guessed: <span id="wrongGuesses"></span>
+            </div>
+        </div>
+        <div class="card card-default">
+            <div class="card-body">
+                Guesses Left: <span id="numGuesses">0</span>
+            </div>
+        </div>
+        <div class="card card-default">
+            <div class="card-body">
+                Wins: <span id="winCounter">0</span>
+            </div>
+        </div>
+        <div class="card card-default">
+            <div class="card-body">
+                Losses: <span id="lossCounter">0</span>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/javascript/game.js"></script>
+
+
+</body>
+
+</html>
