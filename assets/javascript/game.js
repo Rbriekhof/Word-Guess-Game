@@ -6,13 +6,13 @@ var blanksandSuccesses = []
 var wrongLetters = []
 var winCount = 0;
 var lossCount = 0;
-var guessesLeft = 9;
+var guessesLeft = 11;
 
 function StartGame() {
     selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
     lettersinWord = selectedWord.split("");
     numBlanks = lettersinWord.length;
-    guessesLeft = 9;
+    guessesLeft = 11;
     wrongLetters = [];
     blanksandSuccesses = [];
 
@@ -54,6 +54,14 @@ function checkLetters(letter) {
 
 }
 
+StartGame();
+document.onkeyup = function (event) {
+    var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    console.log(lettersGuessed);
+    checkLetters(lettersGuessed);
+    finishRound();
+
+
 function finishRound() {
     console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + " | Guesses Left: " + guessesLeft);
     if (lettersinWord.toString() == blanksandSuccesses.toString()) {
@@ -72,12 +80,5 @@ function finishRound() {
     document.getElementById("wordtoGuess").innerHTML = blanksandSuccesses.join(" ");
     document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
 }
-
-StartGame();
-document.onkeyup = function (event) {
-    var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-    console.log(lettersGuessed);
-    checkLetters(lettersGuessed);
-    finishRound();
 
 }
