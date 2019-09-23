@@ -2,7 +2,7 @@ var wordOptions = ["hoth", "luke", "anakin", "dagobah", "yoda", "jedi", "sith", 
 var selectedWord = ""
 var lettersinWord = []
 var numBlanks = 0;
-var blanksandSuccesses = []
+var blanks = []
 var wrongLetters = []
 var winCount = 0;
 var lossCount = 0;
@@ -14,21 +14,17 @@ function StartGame() {
     numBlanks = lettersinWord.length;
     guessesLeft = 11;
     wrongLetters = [];
-    blanksandSuccesses = [];
+    blanks = [];
 
     for (var i = 0; i < numBlanks; i++) {
-        blanksandSuccesses.push("_")
+        blanks.push("_")
     }
 
-    document.getElementById("wordtoGuess").innerHTML = blanksandSuccesses.join(" ");
+    document.getElementById("wordtoGuess").innerHTML = blanks.join(" ");
     document.getElementById("numGuesses").innerHTML = guessesLeft;
     document.getElementById("winCounter").innerHTML = winCount;
     document.getElementById("lossCounter").innerHTML = lossCount;
 
-    console.log(selectedWord);
-    console.log(lettersinWord);
-    console.log(numBlanks);
-    console.log(blanksandSuccesses);
 }
 
 function checkLetters(letter) {
@@ -42,7 +38,7 @@ function checkLetters(letter) {
     if (isletterinWord) {
         for (var i = 0; i < numBlanks; i++) {
             if (selectedWord[i] == letter) {
-                blanksandSuccesses[i] = letter;
+                blanks[i] = letter;
             }
         }
     }
@@ -50,21 +46,18 @@ function checkLetters(letter) {
         wrongLetters.push(letter);
         guessesLeft--
     }
-    console.log(blanksandSuccesses);
 
 }
 
 StartGame();
 document.onkeyup = function (event) {
     var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-    console.log(lettersGuessed);
     checkLetters(lettersGuessed);
     finishRound();
 
 
 function finishRound() {
-    console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + " | Guesses Left: " + guessesLeft);
-    if (lettersinWord.toString() == blanksandSuccesses.toString()) {
+    if (lettersinWord.toString() == blanks.toString()) {
         winCount++;
         document.getElementById("result").innerHTML = "The Force is strong with you! You win!"
         document.getElementById("winCounter").innerHTML = winCount;
@@ -77,7 +70,7 @@ function finishRound() {
         StartGame();
     }
     document.getElementById("numGuesses").innerHTML = guessesLeft;
-    document.getElementById("wordtoGuess").innerHTML = blanksandSuccesses.join(" ");
+    document.getElementById("wordtoGuess").innerHTML = blanks.join(" ");
     document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
 }
 
